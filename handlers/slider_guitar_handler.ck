@@ -1,4 +1,4 @@
-public class GuitarHandler extends InputHandler {
+public class SliderGuitarHandler extends InputHandler {
 
     public void openDevice(int device) {
         if( !hi.openJoystick( device ) ) me.exit();

@@ -1,6 +1,6 @@
 public class Guitar {
 
-    [ 0, 2, 3, 5, 7, 8, 10] @=> int buttons[];
+    [ 0, 2, 3, 5, 7, 8, 10 ] @=> int buttons[];
     [ 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0 ] @=> int pressed[];
     4 => int octave;
     0 => int pick;
@@ -14,33 +14,33 @@ public class Guitar {
     static GuitarSynth buttonSynth[];
     NoisePick noise;
 
-    fun static void setup(string mode, UGen u) {
+    fun static int setup(string mode, UGen u) {
         new GuitarSynth[10] @=> buttonSynth;
         if (mode == "normal") {
             for (0 => int i; i < button_cap(); i++) {
                 new SubSynth @=> buttonSynth[i];
                 buttonSynth[i].connect(u);
             }
-        }
-
-        if (mode == "stk") {
+        } else if (mode == "stk") {
             for (0 => int i; i < button_cap(); i++) {
                 new StkSynth @=> buttonSynth[i];
                 new Moog => buttonSynth[i].synth;
                 buttonSynth[i].connect(u);
             }
-        }
-        
-        if (mode == "midi") {
+        } else if (mode == "midi") {
             for (0 => int i; i < button_cap(); i++) {
                 new MidiSynth @=> buttonSynth[i];
                 buttonSynth[i].connect(blackhole);
             }
+        } else {
+            <<< "Unrecognized guitar mode: ", mode, "\nAvailable: midi    stk    normal" >>>;
+            return 0;
         }
+
+        return 1;
     }
 
     public int getPitch(int i) {
-
         // just need a proper mod function
         int octave_offset;
         if (offset < 0) {
@@ -58,7 +58,6 @@ public class Guitar {
     public void bendNote(float f) {
         for (0=> int i; i < pressed.cap(); i++) {
             if (pressed[i]) {
-                //getPitch(i) + ( getPitch(i+1) -getPitch(i) )*f => buttonSynth[i].freq;
                 buttonSynth[i].pitchBend(f);
             }
         }
