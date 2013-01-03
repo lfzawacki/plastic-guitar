@@ -9,7 +9,7 @@ You first need the [Chuck Programming Language](http://chuck.cs.princeton.edu) i
 
 Then you'll have to run the `start.sh` script passing some parameters to configure it. Use it as follows:
 
-    # Running with default parameters (sub_synth.ck and keyboard input handler)
+    # Running with default parameters (sub_synth.ck and guitar input handler)
     $ ./start.sh
 
     # Using a Guitar Hero Guitar and sending MIDI events
@@ -19,3 +19,17 @@ Then you'll have to run the `start.sh` script passing some parameters to configu
     $ ./start.sh midi sub
 
 For running on Windows you may need to use [Cygwin](http://www.cygwin.com/) or [Msys](http://www.mingw.org/wiki/MSYS) to have access to a good terminal and then run the `start.sh` script.
+
+## Using with MIDI
+
+Open the program using a MIDI sender:
+
+    $ ./start.sh midi guitar
+
+Use some program to read or route from the output MIDI port and reproduce some sounds. An example with `Jack` and `ZynAddSubFX`:
+
+![Like this](https://raw.github.com/lfzawacki/plastic-guitar/master/assets/example.png)
+
+## Usage demonstration
+
+Me playing it with GH3 guitar: <https://www.youtube.com/watch?v=-FhWxdnzxkI>
