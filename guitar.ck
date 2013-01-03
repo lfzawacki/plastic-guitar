@@ -12,10 +12,10 @@ public class Guitar {
     fun static int button_cap() { return 10; }
 
     static GuitarSynth buttonSynth[];
-    NoisePick noise;
 
     fun static int setup(string mode, UGen u) {
         new GuitarSynth[10] @=> buttonSynth;
+
         if (mode == "normal") {
             for (0 => int i; i < button_cap(); i++) {
                 new SubSynth @=> buttonSynth[i];
@@ -73,7 +73,6 @@ public class Guitar {
                 buttonSynth[i].noteOn(1);
             }
         }
-        noise.noteOn(1);
     }
 
     public void octaveUp() { if (octave > 5) return; octave++; }
