@@ -16,7 +16,7 @@ public class Guitar {
     fun static int setup(string mode, UGen u) {
         new GuitarSynth[10] @=> buttonSynth;
 
-        if (mode == "normal") {
+        if (mode == "sub") {
             for (0 => int i; i < button_cap(); i++) {
                 new SubSynth @=> buttonSynth[i];
                 buttonSynth[i].connect(u);
@@ -33,7 +33,7 @@ public class Guitar {
                 buttonSynth[i].connect(blackhole);
             }
         } else {
-            <<< "Unrecognized guitar mode: ", mode, "\nAvailable: midi    stk    normal" >>>;
+            <<< "Unrecognized guitar mode: ", mode, "\nAvailable: midi    stk    sub" >>>;
             return 0;
         }
 

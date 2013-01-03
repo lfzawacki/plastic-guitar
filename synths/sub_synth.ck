@@ -5,7 +5,7 @@ public class SubSynth extends GuitarSynth {
     11 => lpf.Q;
 
     //lpf.set(1000,5);
-    adsr.set(.5::second,.4::second, 1, .9::second);
+    adsr.set(.5::second,.4::second, 1, .5::second);
 
     public void gain(float f) { f*12 => o.gain; }
     public void setNote(int n) { n => note; Std.mtof(n) => o.freq; }
