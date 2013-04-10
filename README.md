@@ -16,9 +16,9 @@ Then you'll have to run the `start.sh` script passing some parameters to configu
     $ ./start.sh midi guitar
 
     # Using a Guitar Hero 3 slider guitar and the sub_synth.ck
-    $ ./start.sh midi sub
+    $ ./start.sh sub guitar
 
-For running on Windows you may need to use [Cygwin](http://www.cygwin.com/) or [Msys](http://www.mingw.org/wiki/MSYS) to have access to a good terminal and then run the `start.sh` script.
+For running on Windows you may need to use [Cygwin](http://www.cygwin.com/) or [Msys](http://www.mingw.org/wiki/MSYS) to have access to a good shell and then run the `start.sh` script.
 
 ## Using with MIDI
 
